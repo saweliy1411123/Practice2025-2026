@@ -34,7 +34,7 @@ buttonForInputData.addEventListener("click", () => {
   const n = parseInt(inputNumberTests.value);
   const k = parseInt(inputNumberSuccess.value);
   const p = parseFloat(inputChanceSuccess.value.replace(",", "."));
-  if (n >= 0 && k <= n && p > 0 && p < 1) {
+  if (n >= 0 && k <= n && p > 0 && p < 1 && Number.isInteger(n) && Number.isInteger(k)) {
     const result = calculateBernoulli(n, k, p);
     outputText.textContent = `Результат: ${result.toPrecision(5)}`;
   } else {
