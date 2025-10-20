@@ -31,10 +31,19 @@ let buttonForInputData = document.querySelector(".buttonForInputData");
 let outputText = document.querySelector(".outputText");
 
 buttonForInputData.addEventListener("click", () => {
-  const n = parseInt(inputNumberTests.value);
-  const k = parseInt(inputNumberSuccess.value);
-  const p = parseFloat(inputChanceSuccess.value.replace(",", "."));
-  if (n >= 0 && k <= n && p > 0 && p < 1 && Number.isInteger(n) && Number.isInteger(k)) {
+  let n = parseFloat(inputNumberTests.value);
+  let k = parseFloat(inputNumberSuccess.value);
+  let p = parseFloat(inputChanceSuccess.value.replace(",", "."));
+
+  if (
+    Number.isInteger(n) &&
+    Number.isInteger(k) &&
+    n >= 0 &&
+    k >= 0 &&
+    k <= n &&
+    p > 0 &&
+    p < 1
+  ) {
     const result = calculateBernoulli(n, k, p);
     outputText.textContent = `Результат: ${result.toPrecision(5)}`;
   } else {
