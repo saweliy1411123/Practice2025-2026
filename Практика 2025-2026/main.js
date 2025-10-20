@@ -36,8 +36,8 @@ buttonForInputData.addEventListener("click", () => {
   let p = parseFloat(inputChanceSuccess.value.replace(",", "."));
 
   if (
-    Number.isInteger(n) &&
-    Number.isInteger(k) &&
+    n % 1 === 0 && // n - целое
+    k % 1 === 0 && // k - целое
     n >= 0 &&
     k >= 0 &&
     k <= n &&
@@ -47,6 +47,8 @@ buttonForInputData.addEventListener("click", () => {
     const result = calculateBernoulli(n, k, p);
     outputText.textContent = `Результат: ${result.toPrecision(5)}`;
   } else {
-    alert("Введены неправильные данные!");
+    alert(
+      "Введены неправильные данные! Убедитесь, что n и k - целые неотрицательные числа, k <= n, и p - число от 0 до 1."
+    );
   }
 });
